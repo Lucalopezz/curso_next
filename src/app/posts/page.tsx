@@ -1,3 +1,5 @@
+import Button from "@/components/button";
+
 interface PostProps {
   id: number;
   title: string;
@@ -17,6 +19,8 @@ const Posts = async () => {
   return (
     <div>
       <h1 className="text-center mt-5 mb-2 text-3xl">Posts</h1>
+      {/* Componente client em uma pagina server */}
+      <Button />
       <div className="flex flex-col gap-4 mx-2">
         {data.posts.map((post) => (
           <div key={post.id} className="bg-zinc-800 p-4 rounded-md">
