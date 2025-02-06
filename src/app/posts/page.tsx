@@ -1,13 +1,14 @@
 import Button from "@/components/button";
+import Link from "next/link";
 
-interface PostProps {
+export interface PostProps {
   id: number;
   title: string;
   body: string;
   userId: number;
 }
 
-interface RespProps {
+export interface RespProps {
   posts: PostProps[];
 }
 // função que é gerada no server, tem q ser async
@@ -74,6 +75,13 @@ const Posts = async () => {
           <div key={post.id} className="bg-zinc-800 p-4 rounded-md">
             <h2 className="font-bold">{post.title}</h2>
             <p>{post.body}</p>
+            <br />
+            <Link
+              className="bg-blue-600 p-2 rounded-md text-white hover:bg-blue-700"
+              href={`/posts/${post.userId}`}
+            >
+              Ver mais posts desse user
+            </Link>
           </div>
         ))}
       </div>
