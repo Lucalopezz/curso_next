@@ -11,6 +11,9 @@ export interface PostProps {
 export interface RespProps {
   posts: PostProps[];
 }
+
+export const revalidate = 60;
+
 // função que é gerada no server, tem q ser async
 const handleServerSide = async () => {
   "use server";
@@ -24,7 +27,12 @@ const handleSearchUser = async (formData: FormData) => {
 
   const userId = formData.get("userId");
 
-  const resp = await fetch(`https://dummyjson.com/posts/user/${userId}`);
+  const resp = await fetch(`https://dummyjson.com/posts/user/${userId}`, {
+    cache: "force-cache",
+    next: {
+      revalidate: 60,
+    },
+  });
   const data: RespProps = await resp.json();
 
   console.log(data);
