@@ -10,7 +10,7 @@ const Button = () => {
   };
   return (
     <div>
-      <button onClick={handleChangeName}>Alterar nome aqui</button>
+      <button onClick={handleChangeName} className="bg-stone-600 p-2 rounded-md">Alterar nome aqui</button>
       <h3>Nome: {nome}</h3>
     </div>
   );
